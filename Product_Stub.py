@@ -1,3 +1,8 @@
+class OutOfStockError(Exception):
+  def __init__(self, message="The Quantity which you want to Purchase is not available in our stock. Sorry for Inconvinience."):
+    self.message = message
+    super().__init__(self.message)
+
 class Product:
   def __init__(self, name, amount, price):
       self.name = name
@@ -15,9 +20,9 @@ class Product:
       return total_price
   
   def make_purchase(self, quantity):
-      pass  
-
-# create product object
-# make purchases against different product quantities (make sure to run each test case)
-# do not forget to handle exceptions
-# print the remaining stock after each purchase
+    if quantity > self.amount:
+        raise OutOfStockError(f"{quantity} {self.name} is not in stock. In stock items: {self.amount}")
+    else:
+        self.amount = self.amount - quantity
+        price = self.get_price(quantity)
+        print(price) 
