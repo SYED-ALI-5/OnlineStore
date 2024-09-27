@@ -1,3 +1,6 @@
+# SP23-BAI-050
+# SP23-BAI-039
+
 class OutOfStockError(Exception):
   def __init__(self, message="The Quantity which you want to Purchase is not available in our stock. Sorry for Inconvinience."):
     self.message = message
