@@ -5,7 +5,14 @@ class Product:
       self.price = price
 
   def get_price(self, quantity):
-      pass
+      total_price = quantity * self.price
+      if quantity >= 10 and quantity < 100:
+          discount = self.price * 10/100
+          total_price = total_price - discount
+      elif quantity >= 100:
+          discount = self.price * 20/100
+          total_price = total_price - discount
+      return total_price
   
   def make_purchase(self, quantity):
       pass  
